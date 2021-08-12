@@ -16,9 +16,6 @@ use App\Http\Controllers\CategoryController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('index');
-// });
 Route::get('/', [NewsController::class, 'index']) -> name('index');
 
 Route::group(['prefix' => 'news'], function() {
@@ -28,7 +25,7 @@ Route::group(['prefix' => 'news'], function() {
 
 
 Route::group(['prefix' => 'admin', 'as' => '.admin'], function()  {
-    Route::resource('news', AdminNewsController::class);
+    Route::resource('/', AdminNewsController::class);
     Route::resource('categories', AdminCategoryController::class);
 });
 
@@ -37,3 +34,6 @@ Route::group(['prefix' => 'category'], function() {
     Route::get('/', [CategoryController::class, 'index']) -> name('category');
     Route::get('show/{id}', [CategoryController::class, 'show'])->where('id', '\d+')-> name('category.show');
 });
+
+
+Route::redirect('/here', '/admin') -> name('admin.redirect');
