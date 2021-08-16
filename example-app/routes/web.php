@@ -5,6 +5,9 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Admin\IndexController;
+use App\Http\Controllers\FeedbackController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -25,7 +28,8 @@ Route::group(['prefix' => 'news'], function() {
 
 
 Route::group(['prefix' => 'admin', 'as' => '.admin'], function()  {
-    Route::resource('/', AdminNewsController::class);
+    Route::get('/', IndexController::class)->name('adminnews');
+    Route::resource('news', AdminNewsController::class);
     Route::resource('categories', AdminCategoryController::class);
 });
 
@@ -37,3 +41,5 @@ Route::group(['prefix' => 'category'], function() {
 
 
 Route::redirect('/here', '/admin') -> name('admin.redirect');
+
+Route::get('/feedback', [FeedbackController::class, 'index']) -> name('feedback');

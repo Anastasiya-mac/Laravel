@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@section('header')
+    <x-header></x-header>
+@endsection
 @section('content')
     <h3>Новости категории {{ $id }}:</h3><br>
     <h4>Список новостей</h4>

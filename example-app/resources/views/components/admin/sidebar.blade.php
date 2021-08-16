@@ -23,12 +23,14 @@
             <hr class="sidebar-divider">
 
             <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="{{ route('.adminindex')}}">
+            <li class="nav-item @if (request()->routeIs('.adminnews.*')) active @endif">
+                <a class="nav-link" href="{{ route('.adminnews.index')}}">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Новости</span>
                 </a>
-                <a class="nav-link collapsed" href="{{ route('.admincategories.index') }}">
+            </li>
+            <li class="nav-item @if (request()->routeIs('.admincategories.*')) active @endif">
+                <a class="nav-link" href="{{ route('.admincategories.index') }}">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Категории</span>
                 </a>
@@ -38,4 +40,3 @@
             <hr class="sidebar-divider">
 
         </ul>
-        <!-- End of Sidebar -->

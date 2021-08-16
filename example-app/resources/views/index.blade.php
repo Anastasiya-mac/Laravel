@@ -1,4 +1,7 @@
 @extends('layouts.main')
+@section('header')
+    <x-header></x-header>
+@endsection
 @section('content')
     @forelse($news as $n)
     <!-- Post preview-->

@@ -14,7 +14,7 @@ class NewsController extends Controller
      */
     public function index()
     {
-        return view('admin.index', [
+        return view('admin.news', [
 			'NewsList' => $this->NewsList
 		]);
     }
@@ -37,7 +37,10 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+    		'title' => ['required', 'string'],
+            'author' => ['required', 'string'],
+		]);
     }
 
     /**
